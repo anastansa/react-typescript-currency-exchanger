@@ -52,22 +52,24 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <div className="exchange__title"> Currency Exchanger </div>
-      <div className="exchange">
-        <img className="exchange__img" src={exchangeImg} alt="exchange"/>
-        <CurrencyBlock
-          currencies={currencies}
-          value={fromAmount}
-          title={"From"}
-          onChangeValue={onChangeValue}
-        />
-        <CurrencyBlock
-          currencies={currencies}
-          value={fromAmount}
-          title={"To"}
-          onChangeValue={onChangeValue}
-        />
+    <div id="exchange-page">
+      <div className="container">
+        <div className="exchange__title"> Currency Exchanger</div>
+        <div className="exchange">
+          <img className="exchange__img" src={exchangeImg} alt="exchange"/>
+          <CurrencyBlock
+            currencies={currencies}
+            value={fromAmount}
+            title={"From"}
+            onChangeValue={onChangeValue}
+          />
+          <CurrencyBlock
+            currencies={currencies}
+            value={fromAmount}
+            title={"To"}
+            onChangeValue={onChangeValue}
+          />
+        </div>
       </div>
     </div>
   );
