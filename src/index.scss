@@ -24,7 +24,7 @@ body {
 
 .exchange {
   position: relative;
-  max-width: 1000px;
+  max-width: 70%;
   margin: 30px auto;
 
   display: grid;
@@ -52,6 +52,11 @@ body {
     }
 
     .exchange__currencies {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      position: relative;
+
       width: 100%;
       padding: 10px;
 
@@ -60,6 +65,17 @@ body {
       font-size: 16px;
       font-weight: 500;
       background-color: $lightgreen;
+
+      &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        right: 0;
+        width: 3px;
+        height: 3px;
+
+        border: 2px solid red;
+      }
     }
 
     .exchange__content {
@@ -74,10 +90,10 @@ body {
 
         font-size: 18px;
         letter-spacing: 1.5px;
-        font-weight: 400;
+        font-weight: 700;
         color: $darkgreen;
         background-color: $lightgreen;
-        font-family: Gugi, sans-serif;
+        font-family: Rajdhani, sans-serif;
 
         &::-webkit-outer-spin-button,
         &::-webkit-inner-spin-button {
@@ -86,6 +102,7 @@ body {
       }
     }
   }
+
   .exchange__img {
     position: absolute;
     left: calc(50% - 20px);
@@ -102,4 +119,65 @@ body {
   font-size: 48px;
   font-weight: 400;
   color: $darkgreen;
+}
+
+
+@media(max-width: 1199px) {
+  .exchange {
+    max-width: 80%;
+
+    .exchange__block {
+      .exchange__content {
+        .exchange__input {
+          padding: 10px;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 991px) {
+  .exchange {
+    max-width: 100%;
+
+    .exchange__block {
+      padding: 30px 20px;
+    }
+  }
+
+  .exchange__title {
+    font-size: 30px;
+  }
+}
+
+@media(max-width: 512px) {
+  .exchange {
+    grid-template-columns: 100%;
+
+    .exchange__block {
+      .exchange__text {
+        font-size: 12px;
+      }
+
+      .exchange__currencies {
+        font-size: 14px;
+      }
+
+      .exchange__content {
+        .exchange__input {
+          font-size: 15px;
+        }
+      }
+    }
+
+    .exchange__img {
+      transform: rotate(90deg);
+      width: 30px;
+      height: 30px;
+    }
+  }
+  .exchange__title {
+    font-size: 20px;
+  }
 }
