@@ -7,19 +7,32 @@ function App() {
   const [currencies, setCurrencies] = React.useState<string[]>([])
   const [rate, setRate] =  React.useState<number>(0)
 
-  const [fromCurrency, setFromCurrency] = React.useState<string>('')
-  const [toCurrency, setToCurrency] = React.useState<string>('')
-  const [fromAmount, setFromAmount] = React.useState<string>('')
-  // const [toAmount, setToAmount] = React.useState<number>(0)
+  const [fromCurrency, setFromCurrency] = React.useState<string>('USD')
+  const [toCurrency, setToCurrency] = React.useState<string>('RUB')
+  const [fromAmount, setFromAmount] = React.useState<number>(0)
+  const [toAmount, setToAmount] = React.useState<number>(0)
 
   React.useEffect(() => {
     fetchRates()
     exchange()
   }, [])
 
-  const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFromAmount(e.target.value)
-    console.log(fromAmount)
+  const changeFromAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFromAmount(+e.target.value)
+    setToAmount(+e.target.value * rate)
+  }
+
+  const changeToAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setToAmount(+e.target.value)
+    setFromAmount(+e.target.value / rate)
+  }
+
+  const changeFromCurrency = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setFromCurrency(e.target.value)
+  }
+
+  const changeToCurrency = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setToCurrency(e.target.value)
   }
 
   async function fetchRates() {
@@ -59,15 +72,19 @@ function App() {
           <img className="exchange__img" src={exchangeImg} alt="exchange"/>
           <CurrencyBlock
             currencies={currencies}
-            value={fromAmount}
+            value={fromAmount.toString()}
+            currency={fromCurrency}
             title={"From"}
-            onChangeValue={onChangeValue}
+            onChangeAmount={changeFromAmount}
+            onChangeCurrency={changeFromCurrency}
           />
           <CurrencyBlock
             currencies={currencies}
-            value={fromAmount}
+            value={toAmount.toString()}
+            currency={toCurrency}
             title={"To"}
-            onChangeValue={onChangeValue}
+            onChangeAmount={changeToAmount}
+            onChangeCurrency={changeToCurrency}
           />
         </div>
       </div>

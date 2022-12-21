@@ -6,7 +6,6 @@ $mint: #c4dcd7;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  user-select: none;
   outline: none;
 }
 
@@ -52,29 +51,33 @@ body {
     }
 
     .exchange__currencies {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
       position: relative;
 
-      width: 100%;
-      padding: 10px;
+      select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
 
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
-      font-size: 16px;
-      font-weight: 500;
-      background-color: $lightgreen;
+        width: 100%;
+        padding: 10px;
+
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 500;
+        background-color: $lightgreen;
+      }
 
       &::before {
         position: absolute;
-        content: "";
-        top: 0;
-        right: 0;
-        width: 3px;
-        height: 3px;
+        content: '';
+        top: calc(50% - 6px);
+        right: 20px;
+        padding: 4px;
 
-        border: 2px solid red;
+        border: solid $darkgreen;
+        border-width: 0 1px 1px 0;
+        transform: rotate(45deg);
       }
     }
 
@@ -144,8 +147,12 @@ body {
     .exchange__block {
       padding: 30px 20px;
     }
+    .exchange__img {
+      left: calc(50% - 15px);
+      width: 30px;
+      height: 30px;
+    }
   }
-
   .exchange__title {
     font-size: 30px;
   }
@@ -173,8 +180,6 @@ body {
 
     .exchange__img {
       transform: rotate(90deg);
-      width: 30px;
-      height: 30px;
     }
   }
   .exchange__title {
