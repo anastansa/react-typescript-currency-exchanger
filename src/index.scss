@@ -124,6 +124,14 @@ body {
   color: $darkgreen;
 }
 
+.exchange__comment {
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  color: $darkgreen;
+  font-family: Rajdhani, sans-serif;
+}
 
 @media(max-width: 1199px) {
   .exchange {

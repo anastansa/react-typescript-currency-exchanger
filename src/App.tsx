@@ -14,8 +14,12 @@ function App() {
 
   React.useEffect(() => {
     fetchRates()
-    exchange()
-  }, [])
+    if(fromCurrency == toCurrency) {
+      setRate(1)
+      setToAmount(fromAmount)
+    }
+    exchange().then(() => setToAmount(fromAmount * rate))
+  }, [fromCurrency, toCurrency, fromAmount, toAmount, rate])
 
   const changeFromAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFromAmount(+e.target.value)
@@ -87,6 +91,7 @@ function App() {
             onChangeCurrency={changeToCurrency}
           />
         </div>
+        <div className="exchange__comment"> 1 {fromCurrency} = {rate} {toCurrency} </div>
       </div>
     </div>
   );
